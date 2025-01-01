@@ -1,16 +1,12 @@
 document.getElementById('firstHeading')
-//<h1 id=​"firstHeading" class=​"firstHeading mw-first-heading">​::before​<span class=​"mw-page-title-main">​B. R. Ambedkar​</span>​</h1>​
 
 document.querySelector('.firstHeading .mw-page-title-main')
-//<span class=​"mw-page-title-main">​B. R. Ambedkar​</span>​
 
 
 document.querySelector('.firstHeading .mw-page-title-main').innerHTML = "<h1>Bhim Rao Ambedkar</h1>"
-// '<h1>Bhim Rao Ambedkar</h1>'
 
 
 document.getElementById('firstHeading').className
-// 'firstHeading mw-first-heading'
 
 
 document.getElementById('firstHeading').getAttribute('class')
@@ -27,10 +23,22 @@ title.style.backgroundColor = 'blue'
 // 'blue'
 
 title.textContent
-// 'Bhim Rao Ambedkar'
 
 title.innerHTML
-// '<span class="mw-page-title-main"><h1>Bhim Rao Ambedkar</h1></span>'
 
 title.innerText
-// 'Bhim Rao Ambedkar'
+
+document.querySelector('input[type="text"]');
+document.querySelector('p:first-child')
+
+const colors = ["red", "green", "blue", "white", "violet"];
+const UL = document.querySelector('ul');
+{/* <ul>​…​</ul>​<li>​…​</li>​<li>​…​</li>​<li>​…​</li>​<li>​…​</li>​<li>​…​</li>​</ul>​  */}
+const listArray = UL.querySelectorAll('li'); // returns a nodelist not an array
+listArray[2].style.backgroundColor = "green";
+
+// convert nodelist to array by spread operator 
+const Array = [...listArray];
+Array.map((item, idx)=> {
+    item.style.backgroundColor = colors[idx];
+})
