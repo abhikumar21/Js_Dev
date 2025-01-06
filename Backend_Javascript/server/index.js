@@ -2,9 +2,21 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBSession = require("connect-mongodb-session")(session);
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 require('dotenv').config()
+
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true
+}));
+
+app.use(express.json({limit: "100kb"}))
+app.use(express.urlencoded({extended: true, limit: "100kb"}))
+app.use(express.static("public")) //to keep assets
+app.use(cookieParser());
 
 
 mongoose.connect(process.env.MONGO_STRING)
@@ -17,6 +29,7 @@ mongoose.connect(process.env.MONGO_STRING)
 .catch((err)=> {
     console.log("MongoDB connection failed!", err);
 })
+
 
 
 // app.use(session({

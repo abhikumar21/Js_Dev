@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:40vw;
+            height: 40vh;
+            border: 2px solid red
+        }
+        .parent{
+            width:80%;
+            height: 80%;
+            border: 2px solid red
+        }
+        .child{
+            width:80%;
+            height: 80%;
+            border: 2px solid red
+        }
+    </style>
+</head>
+<body>
+    <div class="box">Box
+        <div class="parent">Parent
+            <div class="child">Child</div>
+        </div>
+    </div>
+
+    <script>
+        const box = document.querySelector('.box');
+        const parent = document.querySelector('.parent');
+        const child = document.querySelector('.child');
+
+        //bubbling=> child->parent
+        // box.addEventListener('click', ()=> {console.log("box")}) 
+        // parent.addEventListener('click', ()=> {console.log("parent")})
+        // child.addEventListener('click', ()=> {console.log("child")})
+
+        //capturing=> parent->child
+        box.addEventListener('click', ()=> {console.log("box")}, true)
+        parent.addEventListener('click', ()=> {console.log("parent")}, true)
+        child.addEventListener('click', ()=> {console.log("child")}, true)
+
+
+    </script>
+</body>
+</html>
